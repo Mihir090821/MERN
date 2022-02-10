@@ -3,6 +3,7 @@ require('dotenv').config();
 const mongoose = require('mongoose');
 const app = express()
 const port = 8080;
+// 
 // const DB = process.env.MONGODB_URL || 'mongodb+srv://Mihir:Mihir@0912@cluster0.w9ens.mongodb.net/mern?retryWrites=true&w=majority';
 const DB = "mongodb://localhost:27017/mernapp";
 
