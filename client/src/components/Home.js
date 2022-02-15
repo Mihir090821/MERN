@@ -2,7 +2,15 @@ import React from 'react'
 
 const Home = () => {
     return (
-        <div>Home</div>
+        <>
+            <div id="home" className='center' >
+                <div className="">
+                    <h1 className='text-center'>Hello Guys !</h1>
+                    <h4>I Am Learning MERN Stack Development </h4>
+                </div>
+
+            </div>
+        </>
     )
 }
 

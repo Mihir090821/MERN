@@ -1,3 +1,120 @@
-.navbar-nav {
-    margin-left: auto;
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+#root{
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background-color: whitesmoke;
 }
+.krmlogo{
+    width: 100px;
+    height: 100px;
+}
+.ml-auto{
+    margin-left: auto!important;
+}
+#regdiv{
+    height: 450px;
+    overflow: hidden;
+    background-color:white;
+    border-radius: 8px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 5px 2px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+#regdiv h4{
+    font-family:'Fredoka One';
+}
+
+#regdiv input {
+    border: none;margin-left: 8px;
+    /* width: 25em; */
+  }
+
+#regdiv .form-group{
+    border-bottom: 1px solid black;
+    margin-bottom: 10px;
+    padding: 5px;
+    cursor: pointer;
+}
+#regdiv  input:focus {
+    outline: none;
+}
+
+.eyeicon:hover{
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 800px) {
+    
+    #regdiv{
+        background-color: aqua !important;
+    }
+
+    /* #regdiv .form-group{
+        border-bottom: 1px solid rgb(0, 0, 0);
+        margin-bottom: 10px;
+        padding: 5px;
+        cursor: pointer;
+    }    */
+}
+
+@media only screen and (max-width: 1200px) {
+    #regdiv{
+        background-color: red;
+    }
+    #regdiv .form-group{
+        border-bottom: 1px solid black;
+        margin-bottom: 10px;
+        padding: 5px;
+        cursor: pointer;
+    }
+}
+
+
+
+/* css for home page */
+.center{
+    background-color: #b8c6db;
+    background-image: linear-gradient(315deg, #f5f7fa 0%, #b8c6db 74%);   
+    display: flex;
+    justify-content: center;
+    align-items: center;   
+    height: 100vh;
+}
+
+/* css 404 page */
+#error{
+    background-color: white;
+
+}
+/* About Us */
+.aboutimg{
+    overflow: hidden;
+    height: 100px;
+    width: 180px;
+    overflow: hidden !important;
+
+}
+.signuplogo {
+    position: relative;
+    width: 50%;
+    overflow: hidden !important;
+  } 
+
+.signuplogo .changeimgbtn{
+    position: absolute;
+    top: 76%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: rgba(0,0,0,0.5);
+    color: white;
+    font-size: 14px;
+    padding: 5px 0px;
+    border: none;
+    cursor: pointer;
+    /* border-radius: 10px; */
+    width: 8.5rem;
+  }
+
+.signuplogo.changeimgbtn:hover {
+    background-color: black;
+  }
