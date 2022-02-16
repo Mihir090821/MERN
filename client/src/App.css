@@ -12,17 +12,19 @@
 .ml-auto{
     margin-left: auto!important;
 }
-#regdiv{
-    height: 450px;
-    overflow: hidden;
+/* commen blcok for box */
+.commenbbox{
     background-color:white;
     border-radius: 8px;
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 5px 2px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 }
+#regdiv{
+    overflow: hidden;
+    height: 450px;   
+}
 #regdiv h4{
     font-family:'Fredoka One';
 }
-
 #regdiv input {
     border: none;margin-left: 8px;
     /* width: 25em; */
@@ -80,6 +82,11 @@
     height: 100vh;
 }
 
+/* login */
+
+.loginimg{
+    color: blue;
+}
 /* css 404 page */
 #error{
     background-color: white;
@@ -91,15 +98,14 @@
     height: 100px;
     width: 180px;
     overflow: hidden !important;
-
 }
-.signuplogo {
+.profileimg {    
     position: relative;
     width: 50%;
     overflow: hidden !important;
   } 
 
-.signuplogo .changeimgbtn{
+.profileimg .changeimgbtn{
     position: absolute;
     top: 76%;
     left: 50%;
@@ -113,8 +119,52 @@
     cursor: pointer;
     /* border-radius: 10px; */
     width: 8.5rem;
+   
   }
 
-.signuplogo.changeimgbtn:hover {
-    background-color: black;
+.profileimg.changeimgbtn:hover {
+    background-color: black
   }
+
+
+.about h6{
+    font-family:'Fredoka One';
+}
+.about a{
+    text-decoration: none;
+    color: black;
+    font-size: large;
+    cursor: pointer;
+}
+.userprofesion{
+    font-family:Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    color: blue;
+}
+.about .nav-item.active{
+    border-bottom: 5px solid blue !important;
+}
+.about{
+height: 80vh;
+}
+/* contect US */
+.developerdetailsdiv{
+    background-color: white;
+    /* height: 100vh; */
+
+}
+.developerdetailsdiv .detailbox {
+    /* border: 2px solid red; */
+    padding-top: 10px !important;
+    border-radius: 2px;
+    margin-top: 40px;
+    background-color: white;
+    box-shadow:  rgba(60, 64, 67, 0.3) 0px 1px 1px 1px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+.contect_icon{
+   color: #2a2a72;
+}
+
+#getfeedbackdiv{
+
+}

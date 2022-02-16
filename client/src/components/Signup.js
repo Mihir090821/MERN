@@ -18,7 +18,7 @@ export const Signup = () => {
         }
     }
     return (
-        <div className='container my-auto mt-4 ' >
+        <div className='container my-auto mt-4 commenbbox' >
             <div id="regdiv" className='p-1 mx-5'>
                 <div className="row">
                     <div className="col-sm-12 col-md-6 col-xl-6 col-lg-6">

@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash, faEnvelopeOpen } from '@fortawesome/free-solid-svg-icons';
 import { NavLink } from "react-router-dom";
-import LoginImage from '../Images/signup.webp';
+import LoginImage from '../Images/login.jpg';
 
 
 const Login = () => {
@@ -20,7 +20,7 @@ const Login = () => {
     }
     return (
         <div className='container my-auto mt-4 ' >
-            <div id="regdiv" className='p-3 mx-5 logindiv '>
+            <div id="regdiv" className='p-3 mx-5 logindiv commenbbox'>
                 <div className="row">
                     <div className="col-sm-12 col-md-6 col-xl-6 col-lg-6 mt-4 p-5">
                         <h4 className=''>Sign Up</h4>
@@ -35,7 +35,7 @@ const Login = () => {
                                 <input type={type} id='pass' name='pass' placeholder='Password ' className='passinput' />
                             </div>
                             <div className="mt-3">
-                                <button type="submit" className="btn  btn-primary">Login</button>
+                                <button type="submit" className="btn  btn-success">Login</button>
                             </div>
                             <div className="mt-1 text-center">
                                 <NavLink className="btn btn-link active " aria-current="page" to="/signup">Register</NavLink>
