@@ -18,16 +18,21 @@
     border-radius: 8px;
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 5px 2px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 }
+
+.signuplogo{
+    overflow: hidden !important;
+    height: 450px;
+}
 #regdiv{
-    overflow: hidden;
-    height: 450px;   
+    height: 480px;   
+    /* overflow: scroll; */
 }
 #regdiv h4{
     font-family:'Fredoka One';
 }
 #regdiv input {
     border: none;margin-left: 8px;
-    /* width: 25em; */
+        /* width: 25em; */
   }
 
 #regdiv .form-group{
@@ -165,6 +170,75 @@ height: 80vh;
    color: #2a2a72;
 }
 
-#getfeedbackdiv{
-
-}
+/* messegebox design */
+.msgbox{
+    display: none;
+    color: whitesmoke;
+    position: fixed;
+    right: 0;
+    top:5;
+    border-left: 2px;
+    border: 3px solid whitesmoke;
+    border-radius: 7px;
+    box-shadow: inset 20px  whitesmoke;
+    width: 300px;
+    overflow: hidden;
+    font-family: sans-serif;
+    font-weight: 500;
+    z-index: 100000;
+    /* animation: showanimation 0.5s forwards; */
+    }
+    
+    .msgbox a{
+      text-decoration: none;
+      cursor: pointer;
+      color: whitesmoke;
+    }
+    .msgbox.success{
+      background-color: #08e1ae !important;
+      background-image: linear-gradient(315deg, #08e1ae 0%, #98de5b 74%) !important;
+    }
+    .msgbox.danger{
+      background-color: #fc9842 !important;  
+      background-image: linear-gradient(315deg, #fc9842 0%, #fe5f75 74%) !important;
+    }
+    .msgbox.show{
+      display: block !important;
+      animation: showanimation 0.5s forwards;
+    }
+    .msgbox.hide{
+      animation: hideanimation 0.5s forwards;
+    }
+    
+    @keyframes showanimation{
+      0%{
+        transform: translateX(100%);
+      }
+      100%{
+        transform: translateX(0%);
+      }
+    }
+    
+    @keyframes hideanimation{
+      0%{
+        transform: translateX(0%);
+      }
+     
+      100%{
+        transform: translateX(100%);
+      }
+    }
+    .msgbox .messeg-body{
+      border-top: 2px solid white;
+    }
+    .messeg-body{
+      animation: msgcontent 1s forwards;
+    }
+    @keyframes msgcontent {
+      0%{
+        transform: translateY(-40%);
+      }
+      100%{
+        transform: translateY(0%);
+      }
+    }

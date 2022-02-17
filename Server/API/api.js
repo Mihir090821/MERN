@@ -34,7 +34,7 @@ router.post('/registor', (req, res) => {
 
 /***********INSERT Registration DATA USING async await  ***************/
 router.post('/registor', async (req, res) => {
-    const { uname, email, phone, pass, cpass } = req.body;
+    const { uname, email, phone, profession, pass, cpass } = req.body;
     if (!uname || !email || !phone || !pass || !cpass) {
         return res.json({ "status": 0, "message": "All fields Are Required" });
     }
@@ -49,7 +49,7 @@ router.post('/registor', async (req, res) => {
         if (sel) {
             return res.json({ "status": 0, "message": "User Already Exiist" });
         } else {
-            const insertData = new User({ uname, email, phone, pass, cpass });
+            const insertData = new User({ uname, email, phone, profession, pass, cpass });
             const datasaved = await insertData.save();
             if (datasaved) {
                 return res.json({ "status": 1, "message": "User Registered Succesfully" });
