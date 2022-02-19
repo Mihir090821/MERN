@@ -78,7 +78,7 @@ router.post('/login', async (req, res) => {
             // console.log(token);
         }
         if (passmatch) {
-            return res.json({ "status": 1, "message": "User Validate" });
+            return res.json({ "status": 1, "message": "Login Succesful" });
         } else {
             return res.json({ "status": 0, "message": "Invalide Username or Password" });
         }

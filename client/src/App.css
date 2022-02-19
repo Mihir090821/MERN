@@ -30,9 +30,12 @@
 #regdiv h4{
     font-family:'Fredoka One';
 }
-#regdiv input {
+.regdiv input {
     border: none;margin-left: 8px;
-        /* width: 25em; */
+        width: 25em;
+  }
+  .logindiv input{
+    border: none;margin-left: 8px;
   }
 
 #regdiv .form-group{
@@ -54,19 +57,16 @@
     #regdiv{
         background-color: aqua !important;
     }
-
-    /* #regdiv .form-group{
-        border-bottom: 1px solid rgb(0, 0, 0);
-        margin-bottom: 10px;
-        padding: 5px;
-        cursor: pointer;
-    }    */
 }
 
 @media only screen and (max-width: 1200px) {
     #regdiv{
         background-color: red;
     }
+    .regdiv input {
+      border: none;margin-left: 8px;
+      width: 18em;
+    }    
     #regdiv .form-group{
         border-bottom: 1px solid black;
         margin-bottom: 10px;

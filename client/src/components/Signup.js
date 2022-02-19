@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import RegisterImage from '../Images/signup.webp';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPhone, faUser, faEnvelopeOpen, faLock, faEyeSlash, faEye, faUserTie } from '@fortawesome/free-solid-svg-icons';
-import { NavLink } from "react-router-dom";
-import { Message } from "./Message";
+import { NavLink, useNavigate } from "react-router-dom";
+import Swal from 'sweetalert2'
 
 export const Signup = () => {
     // alertify("hello", 1)
@@ -29,8 +29,13 @@ export const Signup = () => {
         setData({ ...Regdata, [fieldname]: val })
     }
 
+    /*********Reset Form Data *******/
+    const resetdata = () => {
+        setData({ ...Regdata, uname: "", email: "", phone: "", profession: "", pass: "", cpass: "" })
+    }
 
-    /*********** User Registration Complete **********/
+    /*********** User Registration **********/
+    let navigate = useNavigate();
     const Registeruser = async (e) => {
         e.preventDefault();
         // const { uname, email, phone, profession, pass, cpass } = Regdata;
@@ -41,13 +46,28 @@ export const Signup = () => {
             },
             body: JSON.stringify(Regdata)
         })
-        const data1 = await responseval.json();
-        console.log(data1);
+        const resultdata = await responseval.json();
+        // alert(resultdata.message)
+        if (resultdata.status === 1) {
+            Swal.fire({
+                icon: 'success',
+                title: 'Congratulations',
+                text: resultdata.message,
+            }).then(() => {
+                resetdata();
+            })
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: resultdata.message,
+            })
+        }
     }
 
     return (
         <>
-            <div className='container my-auto mt-4 commenbbox' >
+            <div className='container my-auto mt-4 commenbbox  regdiv' >
                 <div id="regdiv" className=''>
                     <div className="row">
                         <div className="col-sm-12 col-md-6 col-xl-6 col-lg-6">
@@ -57,7 +77,7 @@ export const Signup = () => {
                         </div>
                         <div className="col-sm-12 col-md-6 col-xl-6 col-lg-6 mt-4 ">
                             <h4 className=''>Sign Up</h4>
-                            <form method='POST' className='mt-5'>
+                            <form method='POST' className='mt-5' id='signupform'>
                                 <div className="form-group">
                                     <label htmlFor="uname"><FontAwesomeIcon icon={faUser} /></label>
                                     <input value={Regdata.uname} onChange={CreateArray} type="text" id='uname' name='uname' className='inputfield' placeholder='Enter Your Name' autoComplete='off' className='' />
