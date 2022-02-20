@@ -8,7 +8,6 @@ import Contact from './components/contact';
 import Login from './components/Login';
 import Signup from './components/Signup';
 import Errorpage from './components/Errorpage';
-import Message from './components/Message';
 
 const App = () => {
   return (

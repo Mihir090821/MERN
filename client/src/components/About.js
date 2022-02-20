@@ -1,8 +1,40 @@
-import React from 'react';
-import { NavLink } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
 import Aboutimg from '../Images/myimage.jpeg';
+import { useNavigate } from "react-router-dom";
 
 export const About = () => {
+    const [Userdata, setData] = useState({});
+    const navigate = useNavigate();
+    const Validateuser = async () => {
+        try {
+            const res = await fetch("/about", {
+                method: "GET",
+                headers: {
+                    Accept: "Application/json",
+                    "Content-Type": "Application/json"
+                },
+                credentials: "include"
+            })
+            const resultdata = await res.json();
+            if (resultdata.status == 1) {
+                setData(resultdata.data);
+                // console.log(resultdata.data.email);
+            } else {
+                navigate("/login");
+
+            }
+
+        } catch (error) {
+            console.log(error);
+            navigate("/login");
+        }
+
+    }
+    useEffect(() => {
+        Validateuser();
+    }, [])
+
+
     return (
         <div className='container my-auto mt-4 ' >
             <div id="" className='p-3 mx-5 logindiv about commenbbox'>
@@ -21,8 +53,8 @@ export const About = () => {
                         </div>
                     </div>
                     <div className="col-sm-10 col-md-6 col-xl-6 col-lg-6  p-5">
-                        <h6 className='username'>Mihir Rathod</h6>
-                        <p className='userprofesion'>Web Developer</p>
+                        <h6 className='username'>{Userdata.uname}</h6>
+                        <p className='userprofesion'>{Userdata.profession}</p>
                         <p>Rankings: <b><span className='userranking'>1/10</span></b> </p>
 
                         {/* tabls */}
@@ -38,11 +70,11 @@ export const About = () => {
                         <div className="tab-content mt-3">
                             <div className="tab-pane active" id="details">
                                 <div className="row">
-                                    <p><strong>User Id: </strong> <span>Mihir Rathod</span></p>
-                                    <p><strong>Name: </strong> <span>Mihir Rathod</span></p>
-                                    <p><strong>Email: </strong> <span>Mihir@gmail.com</span></p>
-                                    <p><strong>Phone: </strong> <span>12340908</span></p>
-                                    <p><strong>Profesion: </strong> <span>Web Developer</span></p>
+                                    <p><strong>User Id: </strong> <span>{Userdata._id}</span></p>
+                                    <p><strong>Name: </strong> <span>{Userdata.uname}</span></p>
+                                    <p><strong>Email: </strong> <span>{Userdata.email}</span></p>
+                                    <p><strong>Phone: </strong> <span>{Userdata.phone}</span></p>
+                                    <p><strong>Profesion: </strong> <span>{Userdata.profession}</span></p>
                                 </div>
                             </div>
                             <div className="tab-pane" id="timeline">Time Line</div>

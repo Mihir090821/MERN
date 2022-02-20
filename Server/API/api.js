@@ -3,10 +3,13 @@ const router = express.Router();
 const bcrypt = require('bcryptjs');
 require("../DB/DB");
 const User = require("../Modal/userschema");
+const authenticate = require("../Middlewares/authenticate");
+
 
 router.get('/', (req, res) => {
-    res.send('Hello World router')
+    res.send('Hello World router');
 });
+
 /***********INSERT Registration DATA USING PROMISSES ***************/
 /*
 router.post('/registor', (req, res) => {
@@ -69,7 +72,6 @@ router.post('/login', async (req, res) => {
     }
     try {
         const sel = await User.findOne({ email: email });
-
         var passmatch = false;
         if (sel != null) {
             passmatch = await bcrypt.compare(pass, sel.pass);
@@ -86,5 +88,26 @@ router.post('/login', async (req, res) => {
         return res.json({ "status": 0, "message": error });
     }
 })
+
+/******** About Us Authentication********/
+router.get('/about', authenticate, (req, res) => {
+    if (req.status == 1) {
+        res.send({ "status": 1, "message": "User Valid", data: req.data });
+
+    } else {
+        res.send({ "status": 0, "message": "User Not Found" });
+    }
+});
+
+
+/*********** Contect US Form Get Data **********/
+router.get('/getdata', authenticate, (req, res) => {
+    if (req.status == 1) {
+        res.send({ "status": 1, "message": "User Valid", data: req.data });
+
+    } else {
+        res.send({ "status": 0, "message": "User Not Found" });
+    }
+});
 
 module.exports = router;
