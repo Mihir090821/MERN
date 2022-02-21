@@ -1,9 +1,39 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import { NavLink } from 'react-router-dom';
 import logo from '../Images/krmlogo.jpg';
+import { UserContext } from '../App'
+
 
 const Navbar = () => {
+    const { state, dispatch } = useContext(UserContext);
+
+    const Menu = () => {
+        if (state) {
+            return (
+                <>
+                    <li className="nav-item">
+                        <NavLink className="nav-link" to="logout">Logout</NavLink>
+                    </li>
+
+                </>
+            )
+
+        } else {
+            return (
+                <>
+                    <li className="nav-item">
+                        <NavLink className="nav-link" to="login">Login</NavLink>
+                    </li>
+                    <li className="nav-item">
+                        <NavLink className="nav-link" to="signup">Registeration</NavLink>
+                    </li>
+
+                </>
+            )
+        }
+    }
+
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <div className="container-fluid">
@@ -24,13 +54,9 @@ const Navbar = () => {
                         <li className="nav-item">
                             <NavLink className="nav-link" to="contect">Contect</NavLink>
                         </li>
-                        <li className="nav-item">
-                            <NavLink className="nav-link" to="login">Login</NavLink>
-                        </li>
-                        <li className="nav-item">
-                            <NavLink className="nav-link" to="signup">Registeration</NavLink>
-                        </li>
+                        <Menu />
                     </ul>
+
                 </div>
             </div>
         </nav>

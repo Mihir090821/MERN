@@ -57,7 +57,7 @@ userSchema.methods.getJWTtoken = async function () {
         return token;
 
     } catch (err) {
-        config.env
+        // config.env
         console.log(err);
     }
 }

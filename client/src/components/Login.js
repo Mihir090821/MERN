@@ -1,13 +1,16 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash, faEnvelopeOpen } from '@fortawesome/free-solid-svg-icons';
 import { NavLink, useNavigate } from "react-router-dom";
 import LoginImage from '../Images/login.jpg';
 import Swal from 'sweetalert2'
-import withReactContent from 'sweetalert2-react-content'
+import withReactContent from 'sweetalert2-react-content';
+import { UserContext } from '../App'
 
 const Login = () => {
+
+    // user context
+    const { state, dispatch } = useContext(UserContext);
     // Show hide Password
     const [type, changetype] = useState("password");
     const [myicon, changeicon] = useState(faEyeSlash);
@@ -20,8 +23,6 @@ const Login = () => {
             changeicon(faEyeSlash)
         }
     }
-
-
     const [Logindata, serData] = useState({
         email: "",
         pass: ""
@@ -54,7 +55,8 @@ const Login = () => {
                 html: <i>{jsondata.message}</i>,
                 icon: 'success'
             }).then(() => {
-                navigate('/')
+                navigate('/');
+                dispatch({ type: 'USER', payload: true }) //for toggle login logout navbar
             })
         } else {
             MySwal.fire({
@@ -70,10 +72,9 @@ const Login = () => {
         <div className='container my-auto mt-4 ' >
             <div id="regdiv" className='p-3 mx-5 logindiv commenbbox logindiv'>
                 <div className="row">
-                    <div className="col-sm-12 col-md-6 col-xl-6 col-lg-6 mt-4 p-5">
+                    <div className="col-sm-12 col-md-6 col-xl-6 col-lg-6 mt-4 p-5 ">
                         <h4 className=''>Sign Up</h4>
                         <form method='POST' className='mt-5'>
-
                             <div className="form-group">
                                 <label htmlFor="uname"><FontAwesomeIcon icon={faEnvelopeOpen} /></label>
                                 <input type="email" value={Logindata.email} onChange={createArray} id='email' name='email' placeholder='Enter Your Email' autoComplete='off' />

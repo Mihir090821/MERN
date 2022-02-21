@@ -3,6 +3,7 @@ const router = express.Router();
 const bcrypt = require('bcryptjs');
 require("../DB/DB");
 const User = require("../Modal/userschema");
+const Feedback = require("../Modal/feedbackschema");
 const authenticate = require("../Middlewares/authenticate");
 
 
@@ -108,6 +109,34 @@ router.get('/getdata', authenticate, (req, res) => {
     } else {
         res.send({ "status": 0, "message": "User Not Found" });
     }
+});
+
+router.post('/contect', authenticate, async (req, res) => {
+    const { userid, uname, email, phone, feedback } = req.body;
+    if (!userid || !uname || !email || !phone || !feedback) {
+        return res.json({ "status": 0, "message": "All fields Are Required" });
+    }
+    try {
+        const sel = await User.findOne({ email: email });
+        if (sel) {
+            // message = feedback;
+            const insertData = new Feedback({ userid, uname, email, phone, message: feedback });
+            const datasaved = await insertData.save();
+            if (datasaved) {
+                return res.json({ "status": 1, "message": "User Registered Succesfully" });
+            }
+        } else {
+            return res.json({ "status": 0, "message": "User Does Not Exiist" });
+        }
+    } catch (error) {
+        return res.json({ "status": 0, "message": error });
+    }
+});
+
+/****** Log Out Page *****/
+router.get('/logout', (req, res) => {
+    res.clearCookie('token', { path: '/' });
+    res.json({ status: 1, message: 'User Logout' })
 });
 
 module.exports = router;

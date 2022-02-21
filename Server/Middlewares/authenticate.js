@@ -11,18 +11,14 @@ const Authenticate = async (req, res, next) => {
         if (data) {
             req.status = 1;
             req.data = data;
-            //  req.json({ "status": 1, "message": "User Valid", data: data });
         } else {
-            //  req.json({ "status": 0, "message": "User Not Found" });
             req.status = 0;
             req.data = "";
         }
         next();
-
     } catch (error) {
-        res.send({ "status": 0, "message": error, "teset": "text" });
+        res.send({ "status": 0, "message": "Invalid User Please Login", "error": error });
     }
-
 }
 
 module.exports = Authenticate;
